@@ -1,6 +1,8 @@
 const express = require('express');
 const app = express();
 
+
+
 app.use(express.static(__dirname + '/views')); // html
 app.use(express.static(__dirname + '/public')); // js, css, images
 
@@ -10,7 +12,7 @@ app.get('/', (req, res) => {
 });
 
 const apiai = require('apiai')("8efdb44db6f8426d83254aa7f1800843 ");
-
+var io = require('socket.io').listen(server);
 io.on('connection', function(socket) {
     socket.on('chat message', (text) => {
   
